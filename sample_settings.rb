@@ -43,7 +43,7 @@ Plugin.create(:sample_settings) do
 
       # file select
       fileselect('ファイルの取得', :sample_settings_fileselect)
-      fileselect('ファイルの取得', :sample_settings_fileselect, './')
+      fileselect('ファイルの取得（パス指定あり）', :sample_settings_fileselect, '/')
     end
 
     adjustment('数値指定', :UserConfigのキー, 0, 100)
@@ -59,7 +59,7 @@ Plugin.create(:sample_settings) do
           copyright: '2018 ahiru',
           version: '1.0.0',
           comments: 'mikutter settingのサンプルプログラム',
-          license: (file_get_contents('./LICENSE') rescue nil),
+          license: (open('./LICENSE', 'rb:utf-8', &:read) rescue nil),
           website: 'https://github.com/Na0ki/mikutter_sample_settings.git',
           logo: '/skin/close.png',
           authors: %w[ahiru3net],
