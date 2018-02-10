@@ -52,7 +52,7 @@ Plugin.create(:sample_settings) do
 
     color('色設定', :sample_settings_color)
 
-    fontcolor 'フォント色', :sample_settings_fontcolor_font, :sample_settings_fontcolor_color
+    fontcolor('フォント色', :sample_settings_fontcolor_font, :sample_settings_fontcolor_color)
 
     about('sample settingsについて',
           program_name: 'sample settings',
