@@ -1,0 +1,9 @@
+---
+slug: :sample_settings
+depends:
+  mikutter: 3.6.0
+  plugin: []
+version: 1.0.0
+author: ahiru3net
+name: sample_settings
+description: プラグインの各種設定のサンプル実装
