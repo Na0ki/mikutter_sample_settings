@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 Plugin.create(:sample_settings) do
-  # 設定項目一覧
   settings('設定サンプル') do
+    #
+    # settings の中に settingを入れ子にすることでグルーピングが可能
+    #
     settings('input') do
-      # input
       input('一行入力欄', :sample_settings_input)
 
-      # input password
       inputpass('パスワード欄', :sample_settings_inputpass)
 
-      # multi text
       settings('multi') do
         multi('複数テキスト', :sample_settings_multi)
         multitext('複数行のテキスト', :sample_settings_multitext)
@@ -20,19 +19,26 @@ Plugin.create(:sample_settings) do
     settings('select系') do
       hash = { 0 => '上', 1 => '下', 2 => '左', 3 => '右' }
 
-      # select combo
-      select('コンボボックス', :sample_settings_select_combo, hash)
+      select('ドロップダウン', :sample_settings_select_dropdown, hash)
 
-      # select radio
+      #
+      # ラジオボタンにするにはブロック内でブロックを持つオプションが存在する必要がある
+      #
       select('ラジオボタン', :sample_settings_select_radio) do
         option(:foo, 'オプション1') do
+          #
+          # tooltip をチェインすることでその項目に説明を追加できる
+          # ホバーすることで表示される
+          #
           input('オプションブロック', :opt1)
             .tooltip('ブロックを渡すことでラジオボタンになる')
         end
         option(:bar, 'オプション2')
       end
 
-      # multi select
+      #
+      # ブロックを持つオプションがないと動かない
+      #
       multiselect '複数セレクト', :sample_settings_multiselect do
         option(:opt1, _('ヘッダを表示する')) do
           select('複数セレクト内オプション', :opt1_select, hash)
@@ -41,7 +47,10 @@ Plugin.create(:sample_settings) do
         option(:opt3, _('枠線を表示する'))
       end
 
-      # file select
+      #
+      # ファイル取得はパスの指定もできる
+      # パスの指定がない場合は読み込んでいるコンフィグのルートに設定される
+      #
       fileselect('ファイルの取得', :sample_settings_fileselect)
       fileselect('ファイルの取得（パス指定あり）', :sample_settings_fileselect, '/')
     end
