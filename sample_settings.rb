@@ -38,13 +38,14 @@ Plugin.create(:sample_settings) do
 
       #
       # ブロックを持つオプションがないと動かない
+      # ** これはバグの可能性がある refs https://dev.mikutter.hachune.net/issues/1168 **
       #
-      multiselect '複数セレクト', :sample_settings_multiselect do
-        option(:opt1, _('ヘッダを表示する')) do
+      multiselect('複数セレクト', :sample_settings_multiselect) do
+        option(:opt1, _('オプション1')) do
           select('複数セレクト内オプション', :opt1_select, hash)
         end
-        option(:opt2, _('アイコンを表示する'))
-        option(:opt3, _('枠線を表示する'))
+        option(:opt2, 'オプション2')
+        option(:opt3, 'オプション3')
       end
 
       #
